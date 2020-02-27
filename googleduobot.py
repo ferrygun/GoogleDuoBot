@@ -1,3 +1,4 @@
+#chromium-browser --kiosk --disable-session-crashed-bubble --disab-infobars --disable-restore-session-state https://duo.google.com/
 from pymouse import PyMouse
 from time import sleep
 from gi.repository import Gdk
@@ -9,15 +10,22 @@ import argparse
 import cv2
 import os
 
-filename = "/home/xx/screenshot.png"
+import os.path
+from os import path
 
-def screenshotocr(filename):
+filename = "/home/fd/screenshot.png"
+filename1 = "/home/fd/screenshot1.png"
+
+def screenshotocr(filename, x1, y1, x2, y2):
 	win = Gdk.get_default_root_window()
 	h = win.get_height()
 	w = win.get_width()
-	pb = Gdk.pixbuf_get_from_window(win, 593, 110, 486, 150)
+	#pb = Gdk.pixbuf_get_from_window(win, 593, 110, 486, 150)
+	pb = Gdk.pixbuf_get_from_window(win, x1, y1, x2, y2)
+
 	if (pb != None):
-		os.remove(filename)
+		#if(path.exists(filename)):
+		#	os.remove(filename)
 
 		pb.savev(filename,"png", (), ())
 		print("Screenshot saved to screenshot.png.")
@@ -36,7 +44,6 @@ def screenshotocr(filename):
 		# the temporary file
 		text = pytesseract.image_to_string(Image.open(filename))
 		os.remove(filename)
-		print(text)
 		return text
 
 	else:
@@ -53,25 +60,23 @@ m = PyMouse()
 ft = 0
 
 while True:
-    
-    #print(m.position())
-    #d = PixelAt(int(m.position()[0]), int(m.position()[1]))
-    d = PixelAt(388, 626)
-    #print(d)
 
-    if d == 2503224:
+    #m = screenshotocr(filename1, 593, 110, 486, 150);
+    #print(m)
+
+    k = screenshotocr(filename, 593, 60, 486, 60);
+    if("Duo video call" in k or "Duo voice call" in k):
     	print("Ahoy")
-
     	if(ft == 0):
     		ft = 1
-    		k = screenshotocr(filename);
-    		if k == "XXXX":
+    		b = screenshotocr(filename1, 593, 110, 486, 150);
+    		print(m)
+    		if b == "AAAA" or b == "BBBB" or b == "ILT":
     			print("Valid call")
+    			#answer call
     			m.click(894, 1102)
-
-
-    	#m.click(894, 1102) 
     else:
     	ft = 0
 
-    sleep(0.5)
+
+    sleep(2.5)
