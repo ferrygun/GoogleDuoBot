@@ -1,4 +1,12 @@
 #chromium-browser --kiosk --disable-session-crashed-bubble --disab-infobars --disable-restore-session-state https://duo.google.com/
+#pip install vext
+#pip install vext.gi
+#pip install PyUserInput
+#pip install pillow
+#pip install pytesseract
+#sudo apt-get install tesseract-ocr
+#https://askubuntu.com/questions/1048774/disabling-lock-screen-18-04
+
 from pymouse import PyMouse
 from time import sleep
 from gi.repository import Gdk
