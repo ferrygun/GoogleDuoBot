@@ -1,4 +1,4 @@
-#chromium-browser --kiosk --disable-session-crashed-bubble --disab-infobars --disable-restore-session-state https://duo.google.com/
+#chromium-browser --kiosk --noerrors --disable-session-crashed-bubble --disable-infobars --disable-restore-session-state https://duo.google.com/
 #pip install vext
 #pip install vext.gi
 #pip install PyUserInput
