@@ -78,7 +78,7 @@ while True:
     	if(ft == 0):
     		ft = 1
     		b = screenshotocr(filename1, 593, 110, 486, 150);
-    		print(m)
+    		print(b)
     		if b == "AAAA" or b == "BBBB" or b == "ILT":
     			print("Valid call")
     			#answer call
