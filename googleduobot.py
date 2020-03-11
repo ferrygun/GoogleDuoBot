@@ -69,16 +69,17 @@ ft = 0
 
 while True:
 
-    #m = screenshotocr(filename1, 593, 110, 486, 150);
-    #print(m)
+    k = screenshotocr(filename, 593, 60, 486, 60)
+    print(k)
 
-    k = screenshotocr(filename, 593, 60, 486, 60);
-    if("Duo video call" in k or "Duo voice call" in k):
+    if(k == "Duo video call" or k == "Duo voice call"):
     	print("Ahoy")
     	if(ft == 0):
     		ft = 1
     		b = screenshotocr(filename1, 593, 110, 486, 150);
     		print(b)
+		
+		#check if caller is valid contact
     		if b == "AAAA" or b == "BBBB" or b == "ILT":
     			print("Valid call")
     			#answer call
